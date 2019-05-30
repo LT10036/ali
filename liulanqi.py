@@ -6,6 +6,14 @@ from selenium.common.exceptions import InvalidArgumentException
 
 
 
+# 无头模式+取消检测被控制
+# opt.add_argument("disable-infobars")
+# opt.add_argument("--headless")
+# opt.add_argument("--disable-gpu")
+
+
+
+
 
 # 重写浏览器打开方法，使用之前打开的浏览器进行操作，可以注释掉
 class ReuseChrome(Remote):
