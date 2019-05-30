@@ -11,8 +11,8 @@ import re
 # a=f.read()
 
 
-f=open("111.txt","r",encoding='utf-8')
-m=open("000.txt","a",encoding="utf-8")
+f=open("ali02.txt","r",encoding='utf-8')
+m=open("ali03.txt","a",encoding="utf-8")
 
 #  公司名称           //*[@id="site_content"]/div[1]/div/div/div/div[2]/div/div[1]/div[1]/h4
 # 联系人              //*[@id="site_content"]/div[1]/div/div/div/div[2]/div/div[1]/div[1]/dl/dd
@@ -38,8 +38,7 @@ try:
         #获取主要信息模块
         lit=ab.xpath('//*[@id="site_content"]/div[1]/div/div/div/div[2]/div/div[1]/div[2]/div[2]//text()')
 
-        # print(len(lit))
-        # print(lit)
+
 
 
         # 写入厂家及联系人姓名职位
