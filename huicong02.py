@@ -21,7 +21,7 @@ while True:
 
     her=hcc.readline()
 
-    whc = open("hc.txt", "a")
+    whc = open("hc.txt", "a",encoding="utf-8")
     driver.get(her)
 
     # 点击获取联系方式

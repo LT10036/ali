@@ -8,7 +8,7 @@ import time
 opt=Options()
 opt.add_argument("disable-infobars")
 
-f=open("hclb.txt","a")
+f=open("hc_list.txt","a")
 
 # 打开浏览器
 driver=webdriver.Chrome(chrome_options=opt)
