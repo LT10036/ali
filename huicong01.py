@@ -44,7 +44,7 @@ while True:
         time.sleep(3)
 
 #  大标签
-    n=driver.find_elements_by_xpath('/html/body/div[3]/div[7]/div[2]/div[1]/ul/li')
+    n=driver.find_elements_by_class_name('grid-list')
 
     # 循环小标签找出链接,写入文本
     for i in n:
@@ -52,11 +52,11 @@ while True:
         f.write(hre)
         f.write("\n")
 
-    #
+
     #下一页点击
     try:
-        nex = driver.find_element_by_xpath('//*[@id="clip"]/div/span[3]/a').get_attribute("href")
-        driver.find_element_by_xpath('//*[@id="clip"]/div/span[3]/a').click()
+        nex = driver.find_element_by_link_text('下一页').get_attribute("href")
+        driver.find_element_by_link_text('下一页').click()
         time.sleep(3)
     except :
 
