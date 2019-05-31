@@ -44,6 +44,7 @@ for url in range(2,10):
     for i in ns:
         ips = i.find_element_by_xpath("./td[1]").text
         port = i.find_element_by_xpath("./td[2]").text
+        f.write("--proxy-server=http://")
         f.write(ips)
         f.write(":")
         f.write(port)

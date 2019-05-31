@@ -17,22 +17,27 @@ s=1
 
 while s:
 
-    for i in range(9):
-        m=f.readline()
-        if not m:
-            f.close()
-            s=0
-            tb.save("慧聪网商家.xls")
+    while True:
 
+        m=f.readline()
+        if "手机号" in m:
+            row+=1
             break
         else:
+            if not m:
+                f.close()
+                s=0
+                tb.save("慧聪网商家.xls")
 
-            if m[0] == "：":
-                st.write(row, lin, m[1:])
-                lin+=1
+                break
             else:
-                continue
-    row = row+1
+
+                if m[0] == "：":
+                    st.write(row, lin, m[1:])
+                    lin+=1
+                else:
+                    continue
+
     lin = 0
 
 

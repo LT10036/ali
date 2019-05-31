@@ -2,16 +2,39 @@ import selenium
 from  selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+import random
 
 
-# 取消检测浏览器是否被控制
+# selenium添加代理
+
+# ipss=[]
+#
+# # 打开代理池文本
+# f=open("ips.txt","r",encoding="utf-8")
+# while True:
+#     ips=f.readline()
+#     if not ips :
+#         f.close()
+#         break
+#     else:
+#         ipss.append(ips)
+#
+# # 随机数选择 代理ip
+# sj = random.randint(0,len(ipss))
+# sjip = ipss[sj]
+
+
+# 取消检测浏览器是否被控制,添加随机 ip
 
 opt=Options()
 opt.add_argument("disable-infobars")
+opt.add_argument('--proxy-server=http://139.199.29.26:1080')
 # opt.add_argument("--headless")
 # opt.add_argument("--disable-gpu")
 
-hcc=open("hclb.txt","r")
+
+# 打开目标源文本
+hcc=open("hc_list.txt","r")
 
 
 # 打开浏览器
@@ -19,8 +42,11 @@ driver=webdriver.Chrome(chrome_options=opt)
 
 while True:
 
+    # 没写停止判断，直接读取并开始操作
     her=hcc.readline()
 
+
+    # 新建存储文本，结束后找----慧聪网数据清洗.py-------
     whc = open("hc.txt", "a",encoding="utf-8")
     driver.get(her)
 
@@ -29,11 +55,10 @@ while True:
     time.sleep(2)
 
     # 测试获取数据
-    tel = driver.find_element_by_xpath('//*[@id="dialogCorMessage"]').text
+    tel = driver.find_element_by_class_name('cardBox').text
+    print(her)
     print(tel)
     whc.write(tel)
-    whc.write("\n")
-    whc.write("...................................")
     whc.write("\n")
     whc.close()
 
