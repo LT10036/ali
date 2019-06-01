@@ -16,12 +16,12 @@ import time
 
 # 创建建总商品链接网址
 
-Website = "https://s.hc360.com/seller/search.html?ap=B&z=%E4%B8%AD%E5%9B%BD:%E6%B2%B3%E5%8C%97%E7%9C%81:%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%B8%82&w=%E8%8A%B1%E7%9B%86&nselect=1&combine=&j=0&v=1&pnum=1&ee=1"
-
-
-# 取消检测浏览器是否被控制
+Website = "https://s.hc360.com/seller/search.html?ap=B&z=%E4%B8%AD%E5%9B%BD:%E6%B2%B3%E5%8C%97%E7%9C%81:%E7%9F%B3%E5%AE%B6%E5%BA%84%E5%B8%82&w=%E5%AE%B6%E5%85%B7&nselect=1&combine=&j=0&v=1&pnum=4&ee=4"
+# 取消检测浏览器是否被控制  # 不加载图片，设置的参数很固定
+prefs = {"profile.managed_default_content_settings.images": 2}
 opt=Options()
 opt.add_argument("disable-infobars")
+opt.add_experimental_option("prefs", prefs)
 
 # 新建一个存储商家链接的文本，供 02 直接读取调用
 f=open("hc_list.txt","a")

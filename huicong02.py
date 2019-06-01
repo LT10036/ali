@@ -27,11 +27,16 @@ import random
 # 取消检测浏览器是否被控制,添加随机 ip
 
 opt=Options()
+
 opt.add_argument("disable-infobars")
-opt.add_argument('--proxy-server=http://139.199.29.26:1080')
+prefs = {"profile.managed_default_content_settings.images": 2}
+opt.add_argument('--proxy-server=http://221.7.255.168:80')
+opt.add_experimental_option("prefs", prefs)
 # opt.add_argument("--headless")
 # opt.add_argument("--disable-gpu")
 
+# 60.217.64.237:5222
+# 218.77.183.125:8080
 
 # 打开目标源文本
 hcc=open("hc_list.txt","r")
@@ -55,7 +60,10 @@ while True:
     time.sleep(2)
 
     # 测试获取数据
-    tel = driver.find_element_by_class_name('cardBox').text
+    try:
+        tel = driver.find_element_by_class_name('cardBox').text
+    except:
+        tel=driver.find_element_by_class_name('word-box').text
     print(her)
     print(tel)
     whc.write(tel)

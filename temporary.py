@@ -13,7 +13,6 @@ driver = webdriver.Chrome(chrome_options=opt)
 driver.get("https://s.hc360.com/?w=%E5%9B%BE%E6%A1%88%E7%81%AF&mc=seller")
 
 
-# /html/body/div[3]/div[7]/div[2]/div[2]/ul/li
 
 m=driver.find_elements_by_class_name("grid-list")
 
