@@ -3,6 +3,7 @@ from  selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 import random
+import random
 
 
 # selenium添加代理
@@ -30,13 +31,11 @@ opt=Options()
 
 opt.add_argument("disable-infobars")
 prefs = {"profile.managed_default_content_settings.images": 2}
-opt.add_argument('--proxy-server=http://221.7.255.168:80')
+opt.add_argument('--proxy-server=http://60.10.2.70:3128')
 opt.add_experimental_option("prefs", prefs)
 # opt.add_argument("--headless")
 # opt.add_argument("--disable-gpu")
 
-# 60.217.64.237:5222
-# 218.77.183.125:8080
 
 # 打开目标源文本
 hcc=open("hc_list.txt","r")
@@ -49,24 +48,30 @@ while True:
 
     # 没写停止判断，直接读取并开始操作
     her=hcc.readline()
+    if not her:
+        break
+    else:
 
+        try:
+            # 新建存储文本，结束后找----慧聪网数据清洗.py-------
+            whc = open("hc.txt", "a",encoding="utf-8")
+            driver.get(her)
 
-    # 新建存储文本，结束后找----慧聪网数据清洗.py-------
-    whc = open("hc.txt", "a",encoding="utf-8")
-    driver.get(her)
+            # 点击获取联系方式
+            driver.find_element_by_xpath('//*[@id="checkContactBtn"]').click()
+            time.sleep(2)
 
-    # 点击获取联系方式
-    driver.find_element_by_xpath('//*[@id="checkContactBtn"]').click()
-    time.sleep(2)
+            # 测试获取数据
+            try:
+                tel = driver.find_element_by_class_name('cardBox').text
+            except:
+                tel=driver.find_element_by_class_name('word-box').text
+            print(her)
+            print(tel)
+            whc.write(tel)
+            whc.write("\n")
+            whc.close()
+        except:
+            continue
 
-    # 测试获取数据
-    try:
-        tel = driver.find_element_by_class_name('cardBox').text
-    except:
-        tel=driver.find_element_by_class_name('word-box').text
-    print(her)
-    print(tel)
-    whc.write(tel)
-    whc.write("\n")
-    whc.close()
 
