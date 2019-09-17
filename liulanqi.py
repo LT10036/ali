@@ -60,3 +60,49 @@ time.sleep(3)
 
 driver3=ReuseChrome(command_executor=newurl,session_id=seesiond)
 driver3.get("https://www.qq.com/")
+
+
+
+
+
+
+
+
+
+
+# ---------------------------------------------------------------------------------
+# mysql 连接查询+插入
+# ---------------------------------------------------------------------------------
+
+
+
+import pymysql
+
+db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='10036', db='lt',charset='utf8')
+# 使用 cursor() 方法创建一个游标对象 cursor
+cursor = db.cursor()
+
+# 使用 execute() 查询
+cursor.execute("select * from lt01;")
+# 插入
+# cursor.execute("""insert into lt01 values(2,'lt002')""")
+res = cursor.fetchall()    #获取结果
+print(res)
+# 插入操作要执行提交操作，查询不用
+db.commit()
+#关闭游标
+cursor.close()
+# 关闭连接
+db.close()
+
+
+
+
+
+
+
+
+
+
+
+
